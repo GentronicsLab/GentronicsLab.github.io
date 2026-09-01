@@ -505,7 +505,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Genti Fetaj<span> · Gentronics Lab DIY Electronics</span></div>
+  <div class="nav-logo">Genti Fetaj<span> · Gentronics Lab · Software & DIY Electronics </span></div>
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -518,15 +518,26 @@
 <section class="hero" id="home">
   <canvas class="hero-canvas" id="traceCanvas"></canvas>
 
-  <div class="hero-eyebrow">Electronics &amp; Maker Projects</div>
+  <div class="hero-eyebrow">Software · Electronics &amp; Maker Projects</div>
   <h1>Learning by<br><span class="accent">building</span><br><span class="dim">real things.</span></h1>
   <p class="hero-sub">
+    Hi there. I'm glad that you are checking my portfolio. I'm Genti. A Software Engineer that likes to create web apps and DIY Electronics.
+    Below you can check some of my Web Apps and DIY Electronics Projects. I hope you like them.
     I'm just getting started with electronics — and I'm documenting every step.
     From my first LED blink to more ambitious builds, this is where I share what I make and what I learn along the way.
   </p>
   <div class="hero-cta">
     <a href="#projects" class="btn btn-primary">Watch my builds</a>
     <a href="#about" class="btn btn-ghost">About me</a>
+    <div style="width: 100%; margin-top: 1.5rem;">
+    <div style="font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--trace); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem;">
+      // My Web Apps
+    </div>
+    <a href="https://diamond-hunt-c3101.web.app" class="btn btn-ghost" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.5rem; border-color: var(--trace-dim);">
+      💎 Diamond Hunt ↗
+    </a>
+  </div>
+</div>
   </div>
 
   <div class="hero-stats">
@@ -594,6 +605,12 @@
 
   <div class="skills-grid">
     <div class="skill-card fade-up">
+      <span class="skill-icon">💻</span>
+      <div class="skill-name">Programming Languages</div>
+      <p class="skill-desc">Python, C++, HTML, CSS &amp; JavaScript. I want to build apps that make people's lives easier. </p>
+      <div class="skill-bar-wrap"><div class="skill-bar" data-width="85"></div></div>
+    </div>
+    <div class="skill-card fade-up">
       <span class="skill-icon">⚡</span>
       <div class="skill-name">Arduino / C++</div>
       <p class="skill-desc">Microcontroller programming, pin control, serial communication, timing.</p>
@@ -623,12 +640,6 @@
       <p class="skill-desc">Fast iteration from concept to working demo. Failing fast is still learning.</p>
       <div class="skill-bar-wrap"><div class="skill-bar" data-width="85"></div></div>
     </div>
-    <div class="skill-card fade-up">
-      <span class="skill-icon">📹</span>
-      <div class="skill-name">Documenting Builds</div>
-      <p class="skill-desc">Filming while building some of my builds.</p>
-      <div class="skill-bar-wrap"><div class="skill-bar" data-width="60"></div></div>
-    </div>
   </div>
 </section>
 
@@ -641,6 +652,7 @@
       <div class="section-label">// about the builder</div>
       <h2>Hi, I'm Genti.</h2>
       <p>I make things with electricity and code.</p>
+      <p>My brain is in active mode 24/7 to come up with different ideas on Web Apps and DIY Electronics.</p>
       <p>I started with an <strong>Elegoo starter kit</strong> and a YouTube playlist, and I've been hooked ever since. There's something satisfying about writing a few lines of code and watching a physical thing in the real world react to it.</p>
       <p>These videos are a record of my learning.</p>
       <div>
@@ -790,7 +802,7 @@
   const counterEl = document.getElementById('counter-projects');
   const heroObserver = new IntersectionObserver(([entry]) => {
     if (entry.isIntersecting) {
-      animateCounter(counterEl, 13, 1200);
+      animateCounter(counterEl, 12, 1200);
       heroObserver.disconnect();
     }
   }, { threshold: 0.3 });
