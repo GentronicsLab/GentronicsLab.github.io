@@ -508,12 +508,11 @@
   font-size: 0.85rem;
   letter-spacing: 0.08em;
   font-weight: 600;
-  margin-left: auto; /* Pushes switcher to the right */
-  padding-left: 1rem;
+  margin-left: 1rem;
 }
 
 .lang-switch .active-lang {
-  color: var(--trace);
+  color: var(--trace); /* Same trace green as Genti Fetaj */
   text-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
 }
 
@@ -530,13 +529,6 @@
 .lang-switch .lang-divider {
   color: var(--border);
   font-weight: 300;
-}
-
-/* Ensure mobile layout fits both logo and language switcher */
-@media (max-width: 768px) {
-  .nav-logo span {
-    display: none; /* Hides extra text on smaller screens so SV | EN fits cleanly */
-  }
 }
   </style>
 </head>
