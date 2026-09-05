@@ -479,8 +479,24 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
+      nav { 
+        padding: 1rem 1.5rem; 
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .nav-links { 
+        display: flex; 
+        width: 100%;
+        gap: 0.8rem 1.2rem;
+        flex-wrap: wrap;
+        margin-top: 0.25rem;
+      }
+      .nav-links a {
+        font-size: 0.75rem;
+      }
+      .hero {
+        padding-top: 11rem;
+      }
       section, .hero { padding-left: 1.5rem; padding-right: 1.5rem; }
       .divider { padding: 0 1.5rem; }
       .about-grid { grid-template-columns: 1fr; }
@@ -501,36 +517,35 @@
     }
 
     .lang-switch {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-  margin-left: 1rem;
-}
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      margin-left: auto;
+    }
 
-.lang-switch .active-lang {
-  color: var(--trace); /* Same trace green as Genti Fetaj */
-  text-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
-}
+    .lang-switch .active-lang {
+      color: var(--trace); /* Same trace green as Genti Fetaj */
+      text-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+    }
 
-.lang-switch .inactive-lang {
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.2s;
-}
+    .lang-switch .inactive-lang {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
 
-.lang-switch .inactive-lang:hover {
-  color: var(--text);
-}
+    .lang-switch .inactive-lang:hover {
+      color: var(--text);
+    }
 
-.lang-switch .lang-divider {
-  color: var(--border);
-  font-weight: 300;
-}
-    
+    .lang-switch .lang-divider {
+      color: var(--border);
+      font-weight: 300;
+    }
   </style>
 </head>
 <body>
@@ -538,17 +553,17 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Genti Fetaj<span> · Gentronics Lab · Software & Gör-Det-Själv Elektronik </span></div>
-  <ul class="nav-links">
-    <li><a href="#projects">Projekter</a></li>
-    <li><a href="#skills">Färdigheter</a></li>
-    <li><a href="#about">Om mig</a></li>
-    <li><a href="#contact">Kontakta</a></li>
- </ul>
   <div class="lang-switch">
     <span class="active-lang">SV</span>
     <span class="lang-divider">|</span>
     <a href="portfolio.html" class="inactive-lang">EN</a>
   </div>
+  <ul class="nav-links">
+    <li><a href="#projects">Projekter</a></li>
+    <li><a href="#skills">Färdigheter</a></li>
+    <li><a href="#about">Om mig</a></li>
+    <li><a href="#contact">Kontakta</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
