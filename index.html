@@ -499,6 +499,38 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    .lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-left: 1rem;
+}
+
+.lang-switch .active-lang {
+  color: var(--trace); /* Same trace green as Genti Fetaj */
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+}
+
+.lang-switch .inactive-lang {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.lang-switch .inactive-lang:hover {
+  color: var(--text);
+}
+
+.lang-switch .lang-divider {
+  color: var(--border);
+  font-weight: 300;
+}
+    
   </style>
 </head>
 <body>
@@ -511,6 +543,11 @@
     <li><a href="#skills">Färdigheter</a></li>
     <li><a href="#about">Om mig</a></li>
     <li><a href="#contact">Kontakta</a></li>
+ <li class="lang-switch">
+      <span class="active-lang">SV</span>
+      <span class="lang-divider">|</span>
+      <a href="portfolio.html" class="inactive-lang">EN</a>
+    </li>
   </ul>
 </nav>
 
