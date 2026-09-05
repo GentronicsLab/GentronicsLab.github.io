@@ -851,7 +851,7 @@
   const counterEl = document.getElementById('counter-projects');
   const heroObserver = new IntersectionObserver(([entry]) => {
     if (entry.isIntersecting) {
-      animateCounter(counterEl, 14, 1200);
+      animateCounter(counterEl, 16, 1200);
       heroObserver.disconnect();
     }
   }, { threshold: 0.3 });
