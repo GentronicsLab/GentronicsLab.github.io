@@ -103,9 +103,9 @@
     .hero {
       min-height: 100vh;
       display: flex; flex-direction: column; justify-content: center;
-      padding: 8rem 3rem 4rem;
+      padding: 10rem 3rem 4rem; /* Top padding lowered to create breathing room below nav */
       position: relative;
-      background: transparent;
+      background: var(--bg);
       overflow: hidden;
     }
     .hero-canvas {
@@ -113,6 +113,7 @@
       width: 100%; height: 100%;
       pointer-events: none;
       z-index: 0;
+      opacity: 0.45; /* Softened overall animation canvas intensity */
     }
 
     .hero-eyebrow, h1, .hero-sub, .hero-cta, .hero-stats {
@@ -216,7 +217,7 @@
     }
 
     /* ── SECTION SHARED ── */
-    section { padding: 6rem 3rem; }
+    section { padding: 6rem 3rem; position: relative; background: var(--bg); }
     .section-label {
       font-family: 'Space Mono', monospace;
       font-size: 0.7rem;
@@ -462,7 +463,7 @@
         font-size: 0.75rem;
       }
       .hero {
-        padding-top: 11rem;
+        padding-top: 12rem;
       }
       section, .hero { padding-left: 1.5rem; padding-right: 1.5rem; }
       .divider { padding: 0 1.5rem; }
@@ -681,7 +682,7 @@
 
 <!-- ── SCRIPTS ── -->
 <script>
-  // ── CIRCUIT TRACE CANVAS ──
+  // ── SUBTLE CIRCUIT TRACE CANVAS ──
   const canvas = document.getElementById('traceCanvas');
   const ctx = canvas.getContext('2d');
   let W, H, traces = [], animId;
@@ -698,10 +699,10 @@
       x, y,
       points: [{x, y}],
       dir: Math.random() < 0.5 ? 'h' : 'v',
-      speed: 80 + Math.random() * 100,
-      alpha: 0.15 + Math.random() * 0.25,
+      speed: 40 + Math.random() * 50, /* Slower, calmer speed */
+      alpha: 0.06 + Math.random() * 0.12, /* Lower opacity so it stays subtle */
       age: 0,
-      maxAge: 3 + Math.random() * 4
+      maxAge: 3 + Math.random() * 3
     };
   }
 
@@ -713,8 +714,8 @@
     if (t.dir === 'h') nx += dist;
     else ny += dist;
 
-    // chance to turn
-    if (Math.random() < 0.04) {
+    // turn logic
+    if (Math.random() < 0.03) {
       t.points.push({x: nx, y: ny});
       t.dir = t.dir === 'h' ? 'v' : 'h';
     } else {
@@ -732,14 +733,14 @@
         ctx.lineTo(t.points[i].x, t.points[i].y);
       }
       ctx.strokeStyle = `rgba(74, 222, 128, ${fade})`;
-      ctx.lineWidth = 1.5;
+      ctx.lineWidth = 1;
       ctx.stroke();
 
-      // dot at head
+      // soft subtle head dot
       const last = t.points[t.points.length - 1];
       ctx.beginPath();
-      ctx.arc(last.x, last.y, 2.5, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(74, 222, 128, ${Math.min(1, fade * 2)})`;
+      ctx.arc(last.x, last.y, 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(74, 222, 128, ${fade * 1.5})`;
       ctx.fill();
     }
   }
@@ -750,7 +751,8 @@
     const dt = (ts - lastTime) / 1000;
     lastTime = ts;
 
-    if (Math.random() < 0.08) traces.push(makeTrace());
+    // Spawn trace particles less frequently
+    if (Math.random() < 0.025) traces.push(makeTrace());
     traces.forEach(t => stepTrace(t, dt));
     traces = traces.filter(t => t.age < t.maxAge);
     drawTraces();
