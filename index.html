@@ -100,25 +100,16 @@
     }
 
     /* ── HERO ── */
-    .hero {
+   .hero {
       min-height: 100vh;
       display: flex; flex-direction: column; justify-content: center;
-      padding: 10rem 3rem 4rem; /* Top padding lowered to create breathing room below nav */
+      padding: 8rem 3rem 4rem;
       position: relative;
-      background: var(--bg);
       overflow: hidden;
     }
     .hero-canvas {
       position: absolute; inset: 0;
-      width: 100%; height: 100%;
       pointer-events: none;
-      z-index: 0;
-      opacity: 0.45; /* Softened overall animation canvas intensity */
-    }
-
-    .hero-eyebrow, h1, .hero-sub, .hero-cta, .hero-stats {
-      position: relative;
-      z-index: 1;
     }
 
     .hero-eyebrow {
@@ -149,7 +140,7 @@
     h1 .accent { color: var(--trace); }
     h1 .dim { color: var(--muted); }
 
-    .hero-sub {
+     .hero-sub {
       font-family: 'Inter', sans-serif;
       font-size: 1.1rem;
       color: var(--muted);
@@ -217,7 +208,7 @@
     }
 
     /* ── SECTION SHARED ── */
-    section { padding: 6rem 3rem; position: relative; background: var(--bg); }
+    section { padding: 6rem 3rem; }
     .section-label {
       font-family: 'Space Mono', monospace;
       font-size: 0.7rem;
@@ -463,7 +454,7 @@
         font-size: 0.75rem;
       }
       .hero {
-        padding-top: 12rem;
+        padding-top: 11rem;
       }
       section, .hero { padding-left: 1.5rem; padding-right: 1.5rem; }
       .divider { padding: 0 1.5rem; }
@@ -506,13 +497,13 @@
 <section class="hero" id="home">
   <canvas class="hero-canvas" id="traceCanvas"></canvas>
 
-  <div class="hero-eyebrow">Software · Elektronik &amp; Skapade Projekt</div>
-  <h1>Lärande genom att<br><span class="accent">bygga</span><br><span class="dim">riktiga saker.</span></h1>
+  <div class="hero-eyebrow">Software · Electronics &amp; Maker Projects</div>
+  <h1>Learning by<br><span class="accent">building</span><br><span class="dim">real things.</span></h1>
   <p class="hero-sub">
-    Hej. Jag är glad att du tittar in i min portfolio. Jag heter Genti. Jag är en mjukvaruingenjör som gillar att skapa webbappar och gör-det-själv-elektronik.
-    Nedan kan du kolla in några av mina webbappar och gör-det-själv-elektronikprojekt. Jag hoppas att du gillar dem.
-    Jag har precis börjat med elektronik och jag dokumenterar varje steg.
-    Från min första LED-blinkning till mer ambitiösa byggen, det är här jag delar med mig av vad jag gör och vad jag lär mig längs vägen.
+    Hi there. I'm glad that you are checking my portfolio. I'm Genti. A Software Engineer that likes to create web apps and DIY Electronics.
+    Below you can check some of my Web Apps and DIY Electronics Projects. I hope you like them.
+    I'm just getting started with electronics — and I'm documenting every step.
+    From my first LED blink to more ambitious builds, this is where I share what I make and what I learn along the way.
   </p>
   <div class="hero-cta">
     <a href="#projects" class="btn btn-primary">Titta på mina byggen</a>
@@ -682,14 +673,14 @@
 
 <!-- ── SCRIPTS ── -->
 <script>
-  // ── SUBTLE CIRCUIT TRACE CANVAS ──
+  // ── CIRCUIT TRACE CANVAS ──
   const canvas = document.getElementById('traceCanvas');
   const ctx = canvas.getContext('2d');
   let W, H, traces = [], animId;
 
   function resize() {
-    W = canvas.width = canvas.parentElement.offsetWidth;
-    H = canvas.height = canvas.parentElement.offsetHeight;
+    W = canvas.width = canvas.offsetWidth + 200;
+    H = canvas.height = canvas.offsetHeight;
   }
 
   function makeTrace() {
@@ -699,10 +690,10 @@
       x, y,
       points: [{x, y}],
       dir: Math.random() < 0.5 ? 'h' : 'v',
-      speed: 40 + Math.random() * 50, /* Slower, calmer speed */
-      alpha: 0.06 + Math.random() * 0.12, /* Lower opacity so it stays subtle */
+      speed: 80 + Math.random() * 100,
+      alpha: 0.15 + Math.random() * 0.25,
       age: 0,
-      maxAge: 3 + Math.random() * 3
+      maxAge: 3 + Math.random() * 4
     };
   }
 
@@ -714,8 +705,8 @@
     if (t.dir === 'h') nx += dist;
     else ny += dist;
 
-    // turn logic
-    if (Math.random() < 0.03) {
+    // chance to turn
+    if (Math.random() < 0.04) {
       t.points.push({x: nx, y: ny});
       t.dir = t.dir === 'h' ? 'v' : 'h';
     } else {
@@ -733,14 +724,14 @@
         ctx.lineTo(t.points[i].x, t.points[i].y);
       }
       ctx.strokeStyle = `rgba(74, 222, 128, ${fade})`;
-      ctx.lineWidth = 1;
+      ctx.lineWidth = 1.5;
       ctx.stroke();
 
-      // soft subtle head dot
+      // dot at head
       const last = t.points[t.points.length - 1];
       ctx.beginPath();
-      ctx.arc(last.x, last.y, 1.5, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(74, 222, 128, ${fade * 1.5})`;
+      ctx.arc(last.x, last.y, 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(74, 222, 128, ${Math.min(1, fade * 2)})`;
       ctx.fill();
     }
   }
@@ -751,8 +742,7 @@
     const dt = (ts - lastTime) / 1000;
     lastTime = ts;
 
-    // Spawn trace particles less frequently
-    if (Math.random() < 0.025) traces.push(makeTrace());
+    if (Math.random() < 0.08) traces.push(makeTrace());
     traces.forEach(t => stepTrace(t, dt));
     traces = traces.filter(t => t.age < t.maxAge);
     drawTraces();
