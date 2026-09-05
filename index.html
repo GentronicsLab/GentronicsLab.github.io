@@ -41,31 +41,39 @@
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 3rem;
-      background: rgba(10,10,10,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: 'Space Mono', monospace;
-      font-size: 1rem;
-      color: var(--trace);
-      letter-spacing: 0.05em;
-    }
-    .nav-logo span { color: var(--muted); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-family: 'Space Grotesk', sans-serif;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--trace); }
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 3rem;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  gap: 1.5rem; /* Prevents elements from touching each other */
+}
+.nav-logo {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.95rem;
+  color: var(--trace);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.nav-logo span { color: var(--muted); }
+.nav-links { 
+  display: flex; 
+  gap: 2rem; 
+  list-style: none; 
+  margin-left: auto; /* Pushes links and switcher cleanly to the right */
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.nav-links a:hover { color: var(--trace); }
 
     /* ── HERO ── */
     .hero {
@@ -508,8 +516,7 @@
   font-size: 0.85rem;
   letter-spacing: 0.08em;
   font-weight: 600;
-  margin-left: auto; /* Pushes switcher to the right */
-  padding-left: 1rem;
+  white-space: nowrap;
 }
 
 .lang-switch .active-lang {
@@ -532,10 +539,14 @@
   font-weight: 300;
 }
 
-/* Ensure mobile layout fits both logo and language switcher */
+/* ── MOBILE RESPONSIVE ── */
 @media (max-width: 768px) {
-  .nav-logo span {
-    display: none; /* Hides extra text on smaller screens so SV | EN fits cleanly */
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; } /* Hides section links on mobile */
+  
+  /* Shortens subtext on small screens so it fits beside SV | EN */
+  .nav-logo span.hide-mobile {
+    display: none;
   }
 }
     
