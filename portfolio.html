@@ -560,10 +560,10 @@
   <div class="local-video-wrap fade-up">
     <div class="local-video-label">
       <span class="video-tag">Featured Build</span>
-      <span class="local-video-title">Radar System</span>
+      <span class="local-video-title">Portfolio video</span>
     </div>
     <video
-      src="Radar System.mp4"
+      src="Portfolio video.mov"
       controls
       preload="metadata"
       class="local-video">
@@ -571,15 +571,57 @@
     </video>
   </div>
 
-  <div class="fade-up">
-    <a
-      href="https://www.youtube.com/playlist?list=PLNC9wVudR8xk"
-      class="btn btn-ghost playlist-link"
-      target="_blank"
-      rel="noopener">
-      ↗ Open full playlist on YouTube
-    </a>
-  </div>
+  <div class="fade-up" style="margin-top: 2rem; display: flex; justify-content: center;">
+  <a
+    href="https://www.youtube.com/playlist?list=PLNC9wVudR8xk"
+    class="youtube-btn"
+    target="_blank"
+    rel="noopener">
+    <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M23.498 2.617c-.273-1.018-1.074-1.819-2.092-2.092C19.56 0 12 0 12 0S4.44 0 2.594.525c-1.018.273-1.819 1.074-2.092 2.092C0 4.463 0 8.5 0 8.5s0 4.037.502 5.883c.273 1.018 1.074 1.819 2.092 2.092C4.44 17 12 17 12 17s7.56 0 9.406-.525c1.018-.273 1.819-1.074 2.092-2.092C24 12.537 24 8.5 24 8.5s0-4.037-.502-5.883z" fill="#FF0000"/>
+      <path d="M9.545 12.115V4.885L15.818 8.5l-6.273 3.615z" fill="#FFFFFF"/>
+    </svg>
+    <span>Open Full Playlist on YouTube ↗</span>
+  </a>
+</div>
+
+<!-- Extra styling for the YouTube button -->
+<style>
+  .youtube-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.875rem 1.75rem;
+    border-radius: 4px;
+    background: var(--bg3);
+    color: var(--text);
+    border: 1px solid #333;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .youtube-btn svg {
+    transition: transform 0.25s ease;
+  }
+
+  .youtube-btn:hover {
+    border-color: #FF0000;
+    color: #FFFFFF;
+    background: #181818;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.35);
+    transform: translateY(-2px);
+  }
+
+  .youtube-btn:hover svg {
+    transform: scale(1.15);
+  }
+</style>
 </section>
 
 <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
